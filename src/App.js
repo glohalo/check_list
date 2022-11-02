@@ -1,25 +1,21 @@
-import logo from './logo.svg';
+import { Container, Paper} from '@mui/material';
 import './App.css';
+import CheckList from './components/CheckList';
+import {ThemeProvider} from '@mui/material/styles';
+import theme from './styles/styles';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Container>
+          <Paper sx={{
+            marginTop: "2rem",
+            padding: '1rem',
+            background:'linear-gradient(44.8deg, rgba(255, 136, 102, 0.67) -53.1%, rgba(255, 221, 136, 0.28) 49%)'}}>
+            <CheckList/>
+          </Paper>
+      </Container>
+    </ThemeProvider>
   );
-}
-
+};
 export default App;
