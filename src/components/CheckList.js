@@ -10,7 +10,8 @@ import { Container } from '@mui/system';
 function CheckList() {
 
     const [todos, setTodos] = useState([]);
-    
+
+
     const addTodo = todo =>{
         if(!todo.text || /^\s*$/.test(todo.text)){
             return;
@@ -37,10 +38,12 @@ function CheckList() {
         let updatedTodos = todos.map(todo =>{
             if (todo.id === id){
                 todo.isComplete = !todo.isComplete;
+
             }
             return todo;
         });
         setTodos(updatedTodos);
+        
     };
     return (
         <div>
@@ -67,7 +70,8 @@ function CheckList() {
                     todos={todos.filter((todo) => !todo.isComplete)} 
                     completeTodo={completeTodo}
                     removeTodo={removeTodo} 
-                    updateTodo={updateTodo}/>
+                    updateTodo={updateTodo}
+                  />
             </Paper>
             </Container>
             <Container sx={{marginTop: 10}}>
@@ -79,10 +83,12 @@ function CheckList() {
                             <h2 style={{color:'#6f6f6f'}}>Completed</h2>    
                         </div>
                     <CheckL 
-                        todos={todos.filter((todo) => todo.isComplete)} 
+                        todos={todos.filter((todo) => todo.isComplete)}
+                        showButton
                         completeTodo={completeTodo}
                         removeTodo={removeTodo} 
-                        updateTodo={updateTodo}/>
+                        updateTodo={updateTodo}
+                       />
                 </Paper>
             </Container>
         

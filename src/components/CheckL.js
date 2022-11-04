@@ -5,11 +5,12 @@ import EditIcon from '@mui/icons-material/Edit';
 import { IconButton } from '@mui/material';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 
-function CheckL({todos, completeTodo, removeTodo, updateTodo, handleFocus}) {
+function CheckL({todos, completeTodo, removeTodo, updateTodo, showButton}) {
     const [edit, setEdit] = useState({
         id: null,
         value: ''
     });
+    
     const submitUpdate = value =>{
         updateTodo(edit.id, value)
         setEdit({
@@ -17,6 +18,7 @@ function CheckL({todos, completeTodo, removeTodo, updateTodo, handleFocus}) {
             value: '',
         });
     };
+
     if (edit.id){
         return <CheckLForm edit={edit} 
         onSubmit={submitUpdate}/>;
@@ -26,15 +28,20 @@ function CheckL({todos, completeTodo, removeTodo, updateTodo, handleFocus}) {
             
                 <div>
                     {todo.text}
+                    
                     <IconButton aria-label='delete' size='small'>
                         <DeleteIcon color='danger' fontSize='small' onClick={() => removeTodo(todo.id)} sx={{ml:2,flex: 1}} />
                     </IconButton>
                     <IconButton aria-label='edit' size='small'>
                         <EditIcon color='success'fontSize='small' onClick={() => setEdit({id: todo.id, value: todo.text})}  sx={{ml: 1,flex: 1}}/>
                     </IconButton>
+                    {!showButton &&
                     <IconButton aria-label='done' size='small'>
-                        <TaskAltIcon color='primary' fontSize='small' onClick={() => completeTodo(todo.id)}  sx={{ml: 2, flex: 1}}/>
+                        <TaskAltIcon color='primary' fontSize='small' onClick={() => completeTodo(todo.id)}  sx={{ml: 2, flex: 1}}/>                        
                     </IconButton>
+                    }
+                   
+                     
                 </div>
         </div>
     ));
